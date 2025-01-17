@@ -1,0 +1,102 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// 单行隐藏
+@mixin textHidden() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// 多行隐藏
+@mixin textoverflow($clamp: 1) {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -webkit-line-clamp: $clamp;
+  /*! autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+
+@mixin overflow-ellipsis($w-l-c) {
+  /* 防止文本溢出 */
+  overflow: hidden; /* 隐藏超出容器的文本 */
+  /* 限制文本显示行数 */
+  -webkit-line-clamp: $w-l-c; /* 通过限制行数为 2 来实现多行文本截断 */
+  /* 添加省略号 (...) */
+  text-overflow: ellipsis; /* 当文本溢出时，显示省略号 (...) */
+  /* 使容器变为多行文本显示模式 */
+  display: -webkit-box; /* 使用 WebKit 浏览器的 flexbox 容器模型（必要的前缀） */
+  /* 设置多行文本显示的方向为垂直方向 */
+  -webkit-box-orient: vertical; /* 设置盒子的子元素沿着垂直方向排列 (必须与 -webkit-line-clamp 配合使用) */
+}
+//字超出盒子强行换行
+@mixin word-overflow-br() {
+  word-wrap: break-word; /* 旧版本支持 */
+  word-break: break-all; /* 强制换行 */
+  overflow-wrap: break-word; /* 新版本支持 */
+}
+
+//flex box
+@mixin flexbox($jc: space-between, $ai: center, $fd: row, $fw: nowrap) {
+  display: flex;
+  display: -webkit-flex;
+  flex: 1;
+  justify-content: $jc;
+  -webkit-justify-content: $jc;
+  align-items: $ai;
+  -webkit-align-items: $ai;
+  flex-direction: $fd;
+  -webkit-flex-direction: $fd;
+  flex-wrap: $fw;
+  -webkit-flex-wrap: $fw;
+}
+
+@mixin setIcon($width, $height, $img: "about:blank") {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background-image: url($img);
+  background-size: 100% 100%;
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-between() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin before($bg-size: 100%, $bg-position: center) {
+  content: "";
+  display: block;
+  background-size: $bg-size;
+  background-position: $bg-position;
+}
+@mixin after($bg-size: 100%, $bg-position: center) {
+  content: "";
+  display: block;
+  background-size: $bg-size;
+  background-position: $bg-position;
+}
